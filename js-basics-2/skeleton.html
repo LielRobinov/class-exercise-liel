@@ -22,14 +22,45 @@
     </style>
     <script>
       // Function to toggle the cell value and update the status box
+     function toggleCellValue(cell){
+      let arr = document.querySelectorAll(".toggleCell");
+      if (arr[cell].innerHTML === "-1"){
+        arr[cell].innerHTML = "1";
+        arr[cell].style.backgroundColor = "greenyellow";
+     }
+     else {
+      arr[cell].innerHTML = "-1";
+      arr[cell].style.backgroundColor = "";
+     }
+     updateStatusBox();
+    }
+
+      function updateStatusBox(){
+        const arr = document.querySelectorAll(".toggleCell");
+        let sum = 0;
+      for (let i = 0; i < arr.length ; i++)
+      {
+        sum += parseInt(arr[i].innerHTML);
+      }
+      console.log(sum);
+      let statusBox = document.querySelector("#statusBox");
+      if (sum === 3)
+      {
+        statusBox.style.backgroundColor = "greenyellow";
+      }
+      else {
+        statusBox.style.backgroundColor = "red";
+      }
+
+      }
     </script>
   </head>
   <body>
     <table border="1">
       <tr>
-        <td class="toggleCell">-1</td>
-        <td class="toggleCell">-1</td>
-        <td class="toggleCell">-1</td>
+        <td class="toggleCell" id="cell1" onclick="toggleCellValue(0)"> -1</td>
+        <td class="toggleCell" id="cell2" onclick="toggleCellValue(1)">-1</td>
+        <td class="toggleCell" id="cell3" onclick="toggleCellValue(2)">-1</td>
         <td><div id="statusBox"></div></td>
       </tr>
     </table>
